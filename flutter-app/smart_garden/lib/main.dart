@@ -1,6 +1,4 @@
 import 'dart:ffi';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,11 +23,15 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          // body: MyHomePage(),
-          body: MyHomePage()),
+    return ChangeNotifierProvider(
+      lazy: false,
+      create: (_) => socketIO_Handler(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            // body: MyHomePage(),
+            body: MyHomePage()),
+      ),
     );
   }
 }
@@ -81,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
               top: _height * 58 / 100,
               child: socketIO_Controller("hum", "%", "H")),
           Container(
-              margin: EdgeInsets.only(right: _width * 0.1, top: _width * 0.08),
+              margin: EdgeInsets.only(right: _width * 0.03, top: _width * 0.01),
               alignment: Alignment.centerRight,
               child: PumpButton()),
           Container(
