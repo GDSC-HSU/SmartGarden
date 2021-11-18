@@ -1,4 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_garden/wiget/socket.dart' as socket;
 import 'package:flutter/material.dart';
